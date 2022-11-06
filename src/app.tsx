@@ -11,6 +11,13 @@ const basicFormConfig: FormConfig = {
 			onChange: (newValue: string, error?: string): void => {
 				console.log('new name value', newValue);
 			}
+		},
+		{
+			type: 'phone',
+			label: 'Phone',
+			onChange: (newValue: string, error?: string): void => {
+				console.log('new phone value', newValue);
+			}
 		}
 	]
 }
