@@ -1,5 +1,5 @@
 import { FormFieldComponentMap } from '@react-forms/components/form-fields/typedefs/form-field-component-map';
-import { FormFieldConfig, FormFieldReactComponent } from '@react-forms/components/form-fields/typedefs/form-field-config';
+import { FormFieldConfig, FormFieldReactComponent, getHTMLNameForFormField } from '@react-forms/components/form-fields/typedefs/form-field-config';
 import * as React from 'react';
 
 export interface FormConfig {
@@ -20,7 +20,7 @@ export function Form(props: FormConfig): JSX.Element {
 	const fieldsToRender: JSX.Element[] = props.fields.map(
 		(config: FormFieldConfig): JSX.Element => {
 			const Component: FormFieldReactComponent = FormFieldComponentMap[config.type];
-			return <Component {...config}/>
+			return <Component key={getHTMLNameForFormField(config)} {...config}/>
 		}
 	)
 
