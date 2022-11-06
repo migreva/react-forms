@@ -1,9 +1,24 @@
+import { Form, FormConfig } from '@react-forms/components/form';
 import * as React from 'react';
 import { createRoot, Root } from 'react-dom/client';
+
+const basicFormConfig: FormConfig = {
+	title: 'Basic Form',
+	fields: [
+		{
+			type: 'text',
+			label: 'Name',
+			onChange: (newValue: string, error?: string): void => {
+				console.log('new name value', newValue);
+			}
+		}
+	]
+}
 
 function App(): JSX.Element {
 	return <div className="app-container">
 		<h1>Forms Exploration</h1>
+		<Form {...basicFormConfig}/>
 	</div>
 }
 
