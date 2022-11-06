@@ -9,8 +9,8 @@ export function TextInput(props: TextFormFieldConfig): JSX.Element {
 		setValue(props.initialValue || '');
 	}, []);
 
-	function textChange(event): void {
-		const newValue: string = event.target.value;
+	function textChange(event: React.FormEvent<HTMLInputElement>): void {
+		const newValue: string = event.currentTarget.value;
 		setValue(newValue);
 		props.onChange(newValue);
 	}
