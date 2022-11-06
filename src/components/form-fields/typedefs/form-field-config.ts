@@ -1,5 +1,5 @@
 
-export type FormFieldType = 'text';
+export type FormFieldType = 'text' | 'phone';
 export type FormFieldReactComponent = (props: FormFieldConfig) => JSX.Element;
 
 interface BaseFormFieldConfig<T> {
@@ -7,6 +7,11 @@ interface BaseFormFieldConfig<T> {
 	 * specify the type of the form field
 	 */
 	type: FormFieldType;
+
+	/**
+	 * string to be rendered as label
+	 */
+	label: string;
 
 	/**
 	 * a callback required for every form input, gets called when 
@@ -26,10 +31,13 @@ interface BaseFormFieldConfig<T> {
 
 export interface TextFormFieldConfig extends BaseFormFieldConfig<string> {
 	type: 'text';
-	label: string;
 }
 
-export type FormFieldConfig = TextFormFieldConfig;
+export interface PhoneFormFieldConfig extends BaseFormFieldConfig<string> {
+	type: 'phone';
+}
+
+export type FormFieldConfig = TextFormFieldConfig | PhoneFormFieldConfig;
 
 
 /**
