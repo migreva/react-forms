@@ -2,6 +2,9 @@ import { Form, FormConfig } from '@react-forms/components/form';
 import * as React from 'react';
 import { createRoot, Root } from 'react-dom/client';
 
+/**
+ * a form config, with some basic inputs
+ */
 const basicFormConfig: FormConfig = {
 	title: 'Basic Form',
 	fields: [

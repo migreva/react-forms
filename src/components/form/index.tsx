@@ -7,11 +7,12 @@ export interface FormConfig {
 	fields: FormFieldConfig[];
 }
 
-interface FormFieldToRender {
-	component: FormFieldReactComponent;
-	config: FormFieldConfig;
-}
-
+/**
+ * render a form, based on the config passed
+ * 
+ * @param props form config
+ * @returns a rendered form
+ */
 export function Form(props: FormConfig): JSX.Element {
 	function submit(event): boolean {
 		return false;
@@ -23,7 +24,6 @@ export function Form(props: FormConfig): JSX.Element {
 			return <Component key={getHTMLNameForFormField(config)} {...config}/>
 		}
 	)
-
 
 	return (
 		<div className="form">

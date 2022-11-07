@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { getHTMLNameForFormField, TextFormFieldConfig } from '@react-forms/components/form-fields/typedefs/form-field-config';
 
+/**
+ * a basic text input
+ * 
+ * @param props FormFieldConfig where type === 'text'
+ * @returns an accessible input with which a user can edit text
+ */
 export function TextInput(props: TextFormFieldConfig): JSX.Element {
 	const name: string = getHTMLNameForFormField(props);
 
