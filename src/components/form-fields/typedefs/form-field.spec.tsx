@@ -12,23 +12,31 @@ import * as React from 'react';
 Object.keys(FormFieldComponentMap).forEach(
 	(fieldType: FormFieldType): void => {
 		const Component: FormFieldReactComponent = FormFieldComponentMap[fieldType];
+		const fieldConfig: FormFieldConfig = {
+			type: fieldType,
+			label: `Test field for ${fieldType}`,
+			onChange: () => {},
+		};
+		const changeSpy = jest.spyOn(fieldConfig, 'onChange');
+
+		function initFormFieldTest(): void {
+			render(<Component {...fieldConfig}/>)
+		}
 
 		test(`label rendering for: ${fieldType}`, async (): Promise<void> => {
-			const fieldConfig: FormFieldConfig = {
-				type: fieldType,
-				label: `Test field for ${fieldType}`,
-				onChange: () => {},
-			};
+			initFormFieldTest();
+			await screen.findByLabelText(fieldConfig.label);
+		});
 
-			const changeSpy = jest.spyOn(fieldConfig, 'onChange');
-
-			const user = userEvent.setup()
-			render(<Component {...fieldConfig}/>)
-			const inputNode = await screen.findByLabelText(fieldConfig.label);
-
+		test(`basic input change detection`, async (): Promise<void> => {
+			const user = userEvent.setup();
+			initFormFieldTest();
 			// trigger some input
+			const inputNode = await screen.findByLabelText(fieldConfig.label);
 			await user.click(inputNode);
 			await userEvent.keyboard('test text');
+
+			// ensure the change spy was called
 			expect(changeSpy).toHaveBeenCalled();
 		});
 	}
