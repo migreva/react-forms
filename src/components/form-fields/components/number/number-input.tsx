@@ -19,6 +19,7 @@ export function NumberInput(props: NumberFormFieldConfig): JSX.Element {
 		}
 
 		setValue(newValue);
+		props.onChange(newValue);
 	}
 	
 	return (
