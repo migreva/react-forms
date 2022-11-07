@@ -1,5 +1,5 @@
 
-export type FormFieldType = 'text' | 'phone';
+export type FormFieldType = 'text' | 'phone' | 'number';
 export type FormFieldReactComponent = (props: FormFieldConfig) => JSX.Element;
 
 interface BaseFormFieldConfig<T> {
@@ -37,8 +37,13 @@ export interface PhoneFormFieldConfig extends BaseFormFieldConfig<string> {
 	type: 'phone';
 }
 
-export type FormFieldConfig = TextFormFieldConfig | PhoneFormFieldConfig;
+export interface NumberFormFieldConfig extends BaseFormFieldConfig<number> {
+	type: 'number';
+	min?: number;
+	max?: number;
+}
 
+export type FormFieldConfig = TextFormFieldConfig | PhoneFormFieldConfig | NumberFormFieldConfig;
 
 /**
  * given a form config, return a re-useable string that can be used as its label

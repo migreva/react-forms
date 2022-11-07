@@ -21,6 +21,14 @@ const basicFormConfig: FormConfig = {
 			onChange: (newValue: string, error?: string): void => {
 				console.log('new phone value', newValue);
 			}
+		}, 
+		{
+			type: 'number',
+			label: 'Number (with max of 100)',
+			max: 100,
+			onChange: (newValue: number, error?: string): void => {
+				console.log('new number value', newValue);
+			}
 		}
 	]
 }
