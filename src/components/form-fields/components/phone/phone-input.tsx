@@ -35,7 +35,7 @@ export function PhoneInput(props: PhoneFormFieldConfig): JSX.Element {
 	return (
 		<div>
 			<label htmlFor={name}>{props.label}</label>
-			<input type="text" name={name} value={renderedValue} onChange={inputChange}/>
+			<input type="text" id={name} name={name} value={renderedValue} onChange={inputChange}/>
 		</div>
 	);
 }

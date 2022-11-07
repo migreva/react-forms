@@ -24,7 +24,7 @@ export function TextInput(props: TextFormFieldConfig): JSX.Element {
 	return (
 		<div className="form-container">
 			<label htmlFor={name}>{props.label}</label>
-			<input type="text" name={name} value={value} onChange={textChange}/>
+			<input type="text" id={name} name={name} value={value} onChange={textChange}/>
 		</div>
 	)
 }
